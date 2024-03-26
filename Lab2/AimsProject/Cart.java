@@ -11,12 +11,10 @@ public class Cart {
     public String toString() {
         String result = "";
         for (int i = 0; i < this.qtyOrdered; i++){
-            String line = String.valueOf(i + 1).concat(("\t"));
-            line = line.concat(String.valueOf(this.itemOrdered[i].getTitle())).concat("\t");
-            line = line.concat(String.valueOf(this.itemOrdered[i].getCost())).concat("\t\n");
+            String line = String.format("%d \t %-20s \t %.2f \n", i+1, this.itemOrdered[i].getTitle(), this.itemOrdered[i].getCost());
             result = result.concat(line);
         }
-        String lastLine = "The total cost is: ".concat(String.valueOf(this.totalCost()));
+        String lastLine = String.format(" \t Total Cost \t\t\t %.2f", this.totalCost());
         return result.concat(lastLine);
     }
 
@@ -32,6 +30,40 @@ public class Cart {
                 System.out.println("The cart is full.");
             } else if (qtyOrdered >= MAX_NUMBERS_ORDERED - 2) {
                 System.out.println("The cart is almost full.");
+            }
+        }
+    }
+//    public void addDigitalVideoDisc (DigitalVideoDisc[] dvdList){
+//        for (DigitalVideoDisc dvd : dvdList) {
+//            if (qtyOrdered >= MAX_NUMBERS_ORDERED) {
+//                System.out.println("Cannot add the disc! The cart is full.");
+//            }
+//            else {
+//                this.itemOrdered[this.qtyOrdered] = dvd;
+//                qtyOrdered += 1;
+//                System.out.println("The disc has been added.");
+//                if (qtyOrdered >= MAX_NUMBERS_ORDERED) {
+//                    System.out.println("The cart is full.");
+//                } else if (qtyOrdered >= MAX_NUMBERS_ORDERED - 2) {
+//                    System.out.println("The cart is almost full.");
+//                }
+//            }
+//        }
+//    }
+    public void addDigitalVideoDisc (DigitalVideoDisc... discs) {
+        for (DigitalVideoDisc disc : discs) {
+            if (qtyOrdered >= MAX_NUMBERS_ORDERED) {
+                System.out.println("Cannot add the disc! The cart is full.");
+            }
+            else {
+                this.itemOrdered[this.qtyOrdered] = disc;
+                qtyOrdered += 1;
+                System.out.println("The disc has been added.");
+                if (qtyOrdered >= MAX_NUMBERS_ORDERED) {
+                    System.out.println("The cart is full.");
+                } else if (qtyOrdered >= MAX_NUMBERS_ORDERED - 2) {
+                    System.out.println("The cart is almost full.");
+                }
             }
         }
     }
@@ -69,12 +101,11 @@ public class Cart {
         DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
         DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 
+        anOrder.addDigitalVideoDisc(dvd1, dvd2);
         anOrder.addDigitalVideoDisc(dvd1);
-        anOrder.addDigitalVideoDisc(dvd2);
-        anOrder.addDigitalVideoDisc(dvd3);
+        DigitalVideoDisc[] dvds = {dvd2, dvd3};
+        anOrder.addDigitalVideoDisc(dvds);
 
-        System.out.print("\nTotal Cost is: ");
-        System.out.println(anOrder.totalCost());
         System.out.println(anOrder);
     }
 }
