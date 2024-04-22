@@ -1,8 +1,21 @@
+package hust.soict.dsai.aims.cart;
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+
 public class Cart {
     public static final int MAX_NUMBERS_ORDERED = 20;
     private int qtyOrdered = 0;
     private DigitalVideoDisc[] itemOrdered = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 
+    public String toString(){
+        String result = "***********************CART***********************\n";
+        result = result.concat("Ordered Items:\n");
+        for (int i = 1; i <= this.qtyOrdered; i++) {
+            result = result.concat(String.format("%d.DVD - %s - %s - %s - %s: %s $\n", i, itemOrdered[i-1].getTitle(), itemOrdered[i-1].getCategory(), itemOrdered[i-1].getDirector(), itemOrdered[i-1].getLength(), itemOrdered[i-1].getCost()));
+        }
+        result = result.concat(String.format("Total cost: %.2f\n", this.totalCost()));
+        result = result.concat("***************************************************");
+        return result;
+    }
     public void addDigitalVideoDisc (DigitalVideoDisc disc){
         if (qtyOrdered >= MAX_NUMBERS_ORDERED) {
             System.out.println("Cannot add the disc! The cart is full.");
