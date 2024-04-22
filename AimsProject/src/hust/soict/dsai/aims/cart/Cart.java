@@ -116,4 +116,8 @@ public class Cart {
         }
         return result;
     }
+
+    public void print() {
+        System.out.println(this);
+    }
 }

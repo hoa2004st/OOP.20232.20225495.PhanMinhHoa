@@ -22,6 +22,6 @@ public class Aims {
         System.out.println("Total Cost is: ");
         System.out.println(anOrder.totalCost());
 
-        System.out.println(anOrder);
+//        System.out.println(anOrder);
     }
 }
