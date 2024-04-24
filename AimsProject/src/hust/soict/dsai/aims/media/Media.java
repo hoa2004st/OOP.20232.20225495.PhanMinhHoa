@@ -38,7 +38,7 @@ public abstract class Media {
         this.cost = cost;
     }
 
-//    public boolean equals(Media other) {
-//        return this.getId() == other.getId();
-//    }
+    public boolean equals(Media other) {
+        return this.getTitle() == other.getTitle();
+    }
 }
