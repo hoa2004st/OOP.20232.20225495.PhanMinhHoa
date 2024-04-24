@@ -37,4 +37,8 @@ public abstract class Media {
     public void setCost(float cost) {
         this.cost = cost;
     }
+
+//    public boolean equals(Media other) {
+//        return this.getId() == other.getId();
+//    }
 }
