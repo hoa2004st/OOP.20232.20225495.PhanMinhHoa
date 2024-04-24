@@ -39,6 +39,6 @@ public abstract class Media {
     }
 
     public boolean equals(Media other) {
-        return this.getTitle() == other.getTitle();
+        return this.getTitle().equals(other.getTitle());
     }
 }
