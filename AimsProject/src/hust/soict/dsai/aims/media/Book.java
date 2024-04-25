@@ -27,4 +27,7 @@ public class Book extends Media{
             System.out.println("This author is not in the authors list of this book");
         }
     }
+    public String toString(){
+        return "Book - " + getTitle() + " - " + getCategory() + " - " + getCost() + "$";
+    }
 }

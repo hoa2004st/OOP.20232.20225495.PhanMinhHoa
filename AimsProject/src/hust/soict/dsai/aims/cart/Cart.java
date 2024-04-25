@@ -9,7 +9,6 @@ public class Cart {
 
     public String toString(){
         StringBuilder sb = new StringBuilder("***********************CART***********************\n");
-
         sb.append(String.format("Total cost: %.2f\n", this.totalCost()));
         sb.append("***************************************************");
         return sb.toString();

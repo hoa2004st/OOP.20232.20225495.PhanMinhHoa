@@ -11,6 +11,10 @@ public class CompactDisc extends Disc implements Playable{
         return artist;
     }
 
+    public void setArtist(String artist) {
+        this.artist = artist;
+    }
+
     public void addTrack(Track... tracks){
         for (Track track : tracks) {
             this.tracks.add(track);
@@ -36,5 +40,9 @@ public class CompactDisc extends Disc implements Playable{
         for (Track track : tracks){
             track.play();
         }
+    }
+
+    public String toString(){
+        return "CD - " + getTitle() + " - " + getCategory() + " - " + getArtist() + " - " + getCost() + "$";
     }
 }
