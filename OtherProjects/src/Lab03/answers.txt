@@ -1,0 +1,9 @@
+- What are the advantages of Polymorphism?
+I think the advantage of Polymorphism is that: since an object can be considered as its parents, a function can handle objects from different classes (that have the same parents/ancestor)
+
+- How is Inheritance useful to achieve Polymorphism in Java?
+Objects from different class can have the same methods (of ancestor) that can be overide to fit different classes.
+
+- What are the differences between Polymorphism and Inheritance in Java?
+Polymorphism is that a class can be considered as a class or its ancestors classes
+Inheritance is that a class inherit all of its parent class' functions and attributes
