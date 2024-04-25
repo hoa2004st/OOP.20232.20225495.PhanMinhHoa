@@ -14,6 +14,6 @@ public class CartTest {
         cart.addMedia(dvd1, dvd2);
         cart.addMedia(dvd3);
 
-        cart.print();
+        cart.displayCart();
     }
 }

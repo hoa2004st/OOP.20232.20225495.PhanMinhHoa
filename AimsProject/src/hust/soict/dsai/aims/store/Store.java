@@ -20,5 +20,20 @@ public class Store {
             System.out.println("The disc has been removed out of the store.");
         }
     }
+    public Media findMedia(String title){
+        for (Media item : itemsInStore){
+            if (item.getTitle().equals(title)){
+                return item;
+            }
+        }
+        return null;
+    }
+    public void viewStore(){
+        int i = 1;
+        for (Media item : itemsInStore){
+            System.out.println(i + "." + item);
+            i++;
+        }
+    }
 
 }
