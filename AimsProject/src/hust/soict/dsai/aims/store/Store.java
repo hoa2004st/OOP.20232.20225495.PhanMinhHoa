@@ -11,6 +11,10 @@ import java.util.Scanner;
 
 public class Store {
     public ArrayList<Media> itemsInStore = new ArrayList<Media>();
+    public ArrayList<Media> getItemsInStore() {
+        return itemsInStore;
+    }
+
     public void addMedia (Media... items) {
         for (Media item : items) {
             this.itemsInStore.add(item);
