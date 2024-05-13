@@ -1,6 +1,5 @@
 package hust.soict.dsai.aims.screen.manager;
 
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
 
@@ -8,10 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class StoreManagerScreen extends JFrame{
-    private Store store;
-
-    public StoreManagerScreen(Store store) {
+public class AddItemToStoreScreen {
+    public AddItemToStoreScreen(Store store) {
         this.store = store;
 
         Container cp = getContentPane();
@@ -78,14 +75,5 @@ public class StoreManagerScreen extends JFrame{
         }
 
         return center;
-    }
-
-    public static void main(String[] args){
-        Store store = new Store();
-        for (int i = 0; i < 12; i++) {
-            DigitalVideoDisc dvd = new DigitalVideoDisc("Doi Hoa", "Nhac Rap", "Ultimit", 100);
-            store.addMedia(dvd);
-        }
-        new StoreManagerScreen(store);
     }
 }
