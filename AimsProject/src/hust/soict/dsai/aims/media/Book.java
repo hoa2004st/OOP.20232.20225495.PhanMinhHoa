@@ -5,7 +5,12 @@ import java.util.List;
 
 public class Book extends Media{
     private List<String> authors = new ArrayList<String>();
-    public Book() {
+    public Book(int id, String title, String category, float cost, String author) {
+        this.setId(id);
+        this.setTitle(title);
+        this.setCategory(category);
+        this.setCost(cost);
+        this.addAuthor(author);
     }
 
     public void addAuthor(String... authorsName) {
@@ -14,7 +19,9 @@ public class Book extends Media{
                 this.authors.add(authorName);
                 System.out.println("Author has been added to the authors list of this book");
             }
-            System.out.println("This author is already in the authors list of this book");
+            else{
+                System.out.println("This author is already in the authors list of this book");
+            }
         }
     }
 
