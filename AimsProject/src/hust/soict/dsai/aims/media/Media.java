@@ -16,6 +16,15 @@ public abstract class Media {
     private String title;
     private String category;
     private float cost;
+    private int length;
+
+    public int getLength() {
+        return length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
 
     public int getId() {
         return id;
