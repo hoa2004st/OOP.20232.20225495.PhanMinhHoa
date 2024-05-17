@@ -12,8 +12,20 @@ public class DigitalVideoDisc extends Media implements Playable{
         return director;
     }
 
+    public void setLength(int length) {
+        this.length = length;
+    }
+
     public int getLength() {
         return length;
+    }
+
+    public DigitalVideoDisc(int id, String title, String category, float cost, int length) {
+        this.setId(id);
+        this.setTitle(title);
+        this.setCategory(category);
+        this.setCost(cost);
+        this.setLength(length);
     }
 
     public DigitalVideoDisc(String title) {
