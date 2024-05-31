@@ -42,10 +42,11 @@ public class CompactDisc extends Disc implements Playable{
     }
 
     @Override
-    public void play() {
-        for (Track track : tracks){
-            track.play();
-        }
+    public String play() {
+        String result = new String();
+        result = result +"Playing CD: " + this.getTitle() + "\n";
+        result = result + "CD length: " + this.getLength() + "\n";
+        return result;
     }
 
     public String toString(){

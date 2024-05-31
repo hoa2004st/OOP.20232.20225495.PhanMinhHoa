@@ -68,14 +68,37 @@ public class CartController {
     private RadioButton radioBtnTitle;
 
     @FXML
-    void btnPlayPressed(ActionEvent event) {
+    private Button btnPlaceOrder;
 
+    @FXML
+    private void btnPlaceOrderPressed(ActionEvent event){
+        try {
+            Media media = tblMedia.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Your order is placed!");
+            alert.showAndWait();
+            this.cart.getItemsOrdered().clear();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    };
+
+    @FXML
+    void btnPlayPressed(ActionEvent event) {
+        try {
+            Media media = tblMedia.getSelectionModel().getSelectedItem();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, ((Playable) media).play());
+            alert.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void btnRemovePressed(ActionEvent event) {
         Media media = tblMedia.getSelectionModel().getSelectedItem();
         cart.removeMedia(media);
+        costLabel.setText(cart.totalCost() + " $");
     }
 
     @FXML
@@ -125,6 +148,8 @@ public class CartController {
                 showFilteredMedia(newValue);
             }
         });
+
+        costLabel.setText(cart.totalCost() + " $");
     }
 
     void showFilteredMedia(String filterString){
@@ -138,7 +163,7 @@ public class CartController {
         }
 
         tblMedia.setItems(filteredMedia);
-    };
+    }
 
     void updateButtonBar(Media media){
         if (media == null) {

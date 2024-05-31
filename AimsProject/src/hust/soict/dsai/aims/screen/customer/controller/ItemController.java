@@ -7,6 +7,7 @@ import hust.soict.dsai.test.screen.customer.store.TestViewStoreScreen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -50,7 +51,12 @@ public class ItemController {
 
     @FXML
     void btnPlayClicked(ActionEvent event) {
-
+        try {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, ((Playable) media).play());
+            alert.showAndWait();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
