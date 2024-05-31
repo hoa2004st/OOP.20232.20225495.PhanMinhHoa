@@ -26,7 +26,11 @@ public class ItemController {
 
     private Media media;
 
-    private Cart cart;
+    private static Cart cart;
+
+    public static Cart getCart() {
+        return cart;
+    }
 
     public ItemController(Cart cart) {
         this.cart = cart;
@@ -48,7 +52,7 @@ public class ItemController {
 
     @FXML
     void btnAddToCartClicked(ActionEvent event) {
-
+        cart.addMedia(media);
     }
 
     @FXML

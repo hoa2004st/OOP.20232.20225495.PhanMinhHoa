@@ -3,13 +3,17 @@ import hust.soict.dsai.aims.disc.CompactDisc;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Cart {
-    public ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    public ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
 
     public String toString(){
         StringBuilder sb = new StringBuilder("***********************CART***********************\n");
@@ -129,5 +133,9 @@ public class Cart {
                 store.storeMenu(store, cart);
                 break;
         }
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return this.itemsOrdered;
     }
 }

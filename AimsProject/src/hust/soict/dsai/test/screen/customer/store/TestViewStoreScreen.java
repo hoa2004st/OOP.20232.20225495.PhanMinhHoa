@@ -1,23 +1,32 @@
 package hust.soict.dsai.test.screen.customer.store;
 
-import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.CompactDisc;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.aims.screen.customer.controller.CartController;
+import hust.soict.dsai.aims.screen.customer.controller.ItemController;
 import hust.soict.dsai.aims.screen.customer.controller.ViewStoreController;
 import hust.soict.dsai.aims.store.Store;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TestViewStoreScreen extends Application {
     private static Store store = new Store();
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         final String STORE_FXML_FILE_PATH = "/hust/soict/dsai/aims/screen/customer/view/Store.fxml";
