@@ -4,13 +4,21 @@ import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.Playable;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
+import hust.soict.dsai.test.screen.customer.store.TestViewStoreScreen;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class CartController {
     private Cart cart;
@@ -52,11 +60,12 @@ public class CartController {
     @FXML
     private TextField tfFilter;
 
-    @FXML
-    private RadioButton radioBtnFilterId;
 
     @FXML
-    private RadioButton radioBtnFilterTitle;
+    private RadioButton radioBtnId;
+
+    @FXML
+    private RadioButton radioBtnTitle;
 
     @FXML
     void btnPlayPressed(ActionEvent event) {
@@ -71,6 +80,20 @@ public class CartController {
 
     @FXML
     void btnViewStorePressed(ActionEvent event) {
+        try {
+            final String STORE_FXML_FILE_PATH = "/hust/soict/dsai/aims/screen/customer/view/Store.fxml";
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(STORE_FXML_FILE_PATH));
+
+            fxmlLoader.setController(new ViewStoreController(TestViewStoreScreen.getStore()));
+            Parent root = fxmlLoader.load();
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            stage.setTitle("Store");
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -108,7 +131,7 @@ public class CartController {
         FilteredList<Media> filteredMedia = new FilteredList<>(cart.itemsOrdered, p -> true);
         String filter = tfFilter.getText();
 
-        if (radioBtnFilterId.isSelected()) {
+        if (radioBtnId.isSelected()) {
             filteredMedia.setPredicate(s -> String.valueOf(s.getId()).contains(filter));
         } else {
             filteredMedia.setPredicate(s -> s.getTitle().contains(filter));

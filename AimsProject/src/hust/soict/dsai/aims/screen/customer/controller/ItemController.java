@@ -3,6 +3,7 @@ package hust.soict.dsai.aims.screen.customer.controller;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.Playable;
 import hust.soict.dsai.aims.media.Media;
+import hust.soict.dsai.test.screen.customer.store.TestViewStoreScreen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -26,15 +27,7 @@ public class ItemController {
 
     private Media media;
 
-    private static Cart cart;
-
-    public static Cart getCart() {
-        return cart;
-    }
-
-    public ItemController(Cart cart) {
-        this.cart = cart;
-    }
+    public ItemController() {    }
 
     public void setData(Media media){
         this.media = media;
@@ -52,7 +45,7 @@ public class ItemController {
 
     @FXML
     void btnAddToCartClicked(ActionEvent event) {
-        cart.addMedia(media);
+        TestViewStoreScreen.getCart().addMedia(media);
     }
 
     @FXML

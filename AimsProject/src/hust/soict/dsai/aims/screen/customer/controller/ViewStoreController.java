@@ -2,6 +2,7 @@ package hust.soict.dsai.aims.screen.customer.controller;
 
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.store.Store;
+import hust.soict.dsai.test.screen.customer.store.TestViewStoreScreen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,7 +31,7 @@ public class ViewStoreController {
             final String CART_FXML_FILE_PATH = "/hust/soict/dsai/aims/screen/customer/view/Cart.fxml";
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
 
-            fxmlLoader.setController(new CartController(ItemController.getCart()));
+            fxmlLoader.setController(new CartController(TestViewStoreScreen.getCart()));
             Parent root = fxmlLoader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(new Scene(root));
@@ -42,8 +43,6 @@ public class ViewStoreController {
     }
 
     private Store store;
-
-
 
     public ViewStoreController(Store store) {
         this.store = store;
@@ -59,7 +58,7 @@ public class ViewStoreController {
                 FXMLLoader fxmlLoader = new FXMLLoader();
                 fxmlLoader.setLocation(getClass().getResource(ITEM_FXML_FILE_PATH));
 
-                ItemController itemController = new ItemController(cart);
+                ItemController itemController = new ItemController();
                 fxmlLoader.setController(itemController);
                 AnchorPane anchorPane = new AnchorPane();
                 anchorPane = fxmlLoader.load();

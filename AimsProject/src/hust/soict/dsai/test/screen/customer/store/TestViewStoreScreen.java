@@ -1,5 +1,6 @@
 package hust.soict.dsai.test.screen.customer.store;
 
+import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.CompactDisc;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Book;
@@ -25,12 +26,21 @@ import java.util.List;
 
 public class TestViewStoreScreen extends Application {
     private static Store store = new Store();
+    private static Cart  cart= new Cart();
 
+    public static Store getStore() {
+        return store;
+    }
+
+    public static Cart getCart() {
+        return cart;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         final String STORE_FXML_FILE_PATH = "/hust/soict/dsai/aims/screen/customer/view/Store.fxml";
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(STORE_FXML_FILE_PATH));
+
         ViewStoreController viewStoreController = new ViewStoreController(store);
         fxmlLoader.setController(viewStoreController);
         Parent root = fxmlLoader.load();
@@ -52,6 +62,7 @@ public class TestViewStoreScreen extends Application {
         Book book2 = new Book(7, "The Alchemist2", "Story", 20.0f, "Paulo Coelho");
 
         TestViewStoreScreen.store.addMedia(cd, cd2, dvd, dvd2, book, book2);
+        TestViewStoreScreen.cart.addMedia(cd);
 
         launch(args);
     }
