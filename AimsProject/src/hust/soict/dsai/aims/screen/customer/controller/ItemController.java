@@ -12,6 +12,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
+import javax.naming.LimitExceededException;
+
 public class ItemController {
 
     @FXML
@@ -45,7 +47,7 @@ public class ItemController {
 
 
     @FXML
-    void btnAddToCartClicked(ActionEvent event) {
+    void btnAddToCartClicked(ActionEvent event) throws LimitExceededException {
         TestViewStoreScreen.getCart().addMedia(media);
     }
 

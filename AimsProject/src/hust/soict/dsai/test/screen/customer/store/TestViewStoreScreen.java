@@ -57,12 +57,11 @@ public class TestViewStoreScreen extends Application {
         DigitalVideoDisc dvd = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 30, 10.0f);
         Book book = new Book(3, "The Alchemist", "Story", 20.0f, "Paulo Coelho");
 
-        CompactDisc cd2 = new CompactDisc(5, "Nhac do cuc hay2", "Music", 10.0f, "Tong hop");
-        DigitalVideoDisc dvd2 = new DigitalVideoDisc("The Lion King2", "Animation", "Roger Allers", 30, 10.0f);
-        Book book2 = new Book(7, "The Alchemist2", "Story", 20.0f, "Paulo Coelho");
+        CompactDisc cd2 = new CompactDisc(5, "Nhac do cuc hay2", "Music", 15.0f, "Tong hop");
+        DigitalVideoDisc dvd2 = new DigitalVideoDisc("One Thousand and One Nights", "Animation", "unknown", 30, 100.0f);
+        Book book2 = new Book(7, "Doraemon", "Manga", 10.0f, "Fujiko F. Fujio");
 
         TestViewStoreScreen.store.addMedia(cd, cd2, dvd, dvd2, book, book2);
-        TestViewStoreScreen.cart.addMedia(cd);
 
         launch(args);
     }

@@ -4,8 +4,10 @@ import hust.soict.dsai.aims.Aims;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.CompactDisc;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -43,7 +45,7 @@ public class Store {
             i++;
         }
     }
-    public static void storeMenu(Store store, Cart cart){
+    public static void storeMenu(Store store, Cart cart) throws LimitExceededException, PlayerException {
         System.out.println("Store Menu: ");
         System.out.println("--------------------------------");
         System.out.println("1. See a media's details");
