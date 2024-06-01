@@ -1,15 +1,22 @@
 package hust.soict.dsai.aims.cart;
 import hust.soict.dsai.aims.disc.CompactDisc;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.store.Store;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableArray;
+import javafx.collections.ObservableList;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
 public class Cart {
-    public ArrayList<Media> itemsOrdered = new ArrayList<Media>();
+    public ObservableList<Media> itemsOrdered = FXCollections.observableArrayList();
+    public final int MAX_NUMBERS_ORDERED = 20;
 
     public String toString(){
         StringBuilder sb = new StringBuilder("***********************CART***********************\n");
@@ -36,9 +43,12 @@ public class Cart {
         System.out.println(this);
     }
 
-    public void addMedia(Media... items){
-        for (Media item : items) {
-            itemsOrdered.add(item);
+    public void addMedia(Media m) throws LimitExceededException {
+        if (itemsOrdered.size() < MAX_NUMBERS_ORDERED){
+            this.itemsOrdered.add(m);
+        }
+        else {
+            throw new LimitExceededException("ERROR: The number of media has reached its limit");
         }
     }
 
@@ -65,7 +75,7 @@ public class Cart {
         System.out.println("Disc not found in cart");
         return null;
     }
-    public static void cartMenu(Store store, Cart cart) {
+    public static void cartMenu(Store store, Cart cart) throws LimitExceededException, PlayerException {
         System.out.println("Cart Menu: ");
         System.out.println("--------------------------------");
         System.out.println("1. Filter media in cart");
@@ -129,5 +139,9 @@ public class Cart {
                 store.storeMenu(store, cart);
                 break;
         }
+    }
+
+    public ObservableList<Media> getItemsOrdered() {
+        return this.itemsOrdered;
     }
 }

@@ -3,17 +3,19 @@ package hust.soict.dsai.aims;
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.disc.CompactDisc;
 import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.media.Media;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.store.Store;
 
+import javax.naming.LimitExceededException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 public class Aims {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws LimitExceededException, PlayerException {
 //        Cart anOrder = new Cart();
 //
 //        DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
@@ -57,7 +59,7 @@ public class Aims {
         showMenu(store, cart);
 
     }
-    public static void showMenu(Store store, Cart cart){
+    public static void showMenu(Store store, Cart cart) throws LimitExceededException, PlayerException {
         System.out.println("Main Menu: ");
         System.out.println("--------------------------------");
         System.out.println("1. View store");
@@ -111,7 +113,7 @@ public class Aims {
         }
     }
 
-    public static void mediaDetailsMenu(Store store, Cart cart) {
+    public static void mediaDetailsMenu(Store store, Cart cart) throws LimitExceededException, PlayerException {
         System.out.println("Details Menu: ");
         System.out.println("--------------------------------");
         System.out.println("1. Add to cart");
